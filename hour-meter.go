@@ -2,7 +2,7 @@
 // email: westley@sylabs.io
 // Date: Oct 20, 2018
 // https://github.com/WestleyK/hour-meter
-// Version-1.0.1
+// Version-1.0.5
 //
 // MIT License
 //
@@ -42,7 +42,7 @@ import (
 
 
 var (
-    SCRIPT_VERSION string = "version-1.0.1"
+    SCRIPT_VERSION string = "version-1.0.5"
     SCRIPT_DATE string = "Oct 20, 2018"
 
     SCRIPT_NAME string = ""
@@ -54,9 +54,11 @@ var (
     TIME_FILE string = ".time-meter.txt"
     FILE string = ""
     TIME string = ""
+    SEC int64 = 0
     MINUT int64 = 0
     HOUR int64 = 0
     minute_left int64 = 0
+    TMP int64 = 0
 
     h_set bool = false
     m_set bool = false
@@ -117,8 +119,8 @@ func start() {
                 h_set = true
             } else if m_set != true {
                 MINUT, _ = strconv.ParseInt(result[i], 10, 64)
-                minute_left, _ = strconv.ParseInt(result[i], 10, 64)
-                set_minute = true
+  //              minute_left, _ = strconv.ParseInt(result[i], 10, 64)
+  //              set_minute = true
                 //MINUT, err = strconv.Atoi(result[i])
                 m_set = true
             }
@@ -189,27 +191,22 @@ func main() {
     start()
     TIME_START := time.Now().Unix()
     for {
-        time.Sleep(60 * time.Second)
+        time.Sleep(200 * time.Second)
 
-        if set_minute == true {
-            MINUT = time.Now().Unix() - TIME_START
-            MINUT += minute_left
-        } else {
-            MINUT = time.Now().Unix() - TIME_START
+        SEC = time.Now().Unix() - TIME_START
+
+        if SEC >= 60 {
+            MINUT += 1
+            SEC = 0
+            TIME_START = time.Now().Unix()
         }
 
-
-        if MINUT >= 6 {
+        if MINUT >= 60 {
             HOUR += 1
             MINUT = 0
-            TIME_START = time.Now().Unix()
-            set_minute = false
         }
-
     
-//        hour_string := strconv.Itoa(HOUR)
         hour_string := strconv.FormatInt(HOUR, 10)
-//        minut_string := strconv.Itoa(MINUT)
         minut_string := strconv.FormatInt(MINUT, 10)
         time_string := []string{hour_string, " hours and ", minut_string, " minutes\n"}
         TIME = (strings.Join(time_string, " "))
@@ -231,4 +228,3 @@ func main() {
 //
 // End source code
 //
-
