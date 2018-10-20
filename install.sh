@@ -4,7 +4,7 @@
 # email: westley@sylabs.io
 # Date: Oct 20, 2018
 # https://github.com/WestleyK/hour-meter
-# Version-1.0.1
+# Version-1.0.2
 #
 # MIT License
 #
