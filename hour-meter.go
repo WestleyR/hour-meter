@@ -2,7 +2,7 @@
 // email: westley@sylabs.io
 // Date: Oct 20, 2018
 // https://github.com/WestleyK/hour-meter
-// Version-1.0.5
+// Version-1.0.6
 //
 // MIT License
 //
@@ -42,7 +42,7 @@ import (
 
 
 var (
-    SCRIPT_VERSION string = "version-1.0.5"
+    SCRIPT_VERSION string = "version-1.0.6"
     SCRIPT_DATE string = "Oct 20, 2018"
 
     SCRIPT_NAME string = ""
@@ -191,7 +191,7 @@ func main() {
     start()
     TIME_START := time.Now().Unix()
     for {
-        time.Sleep(200 * time.Second)
+        time.Sleep(30 * time.Second)
 
         SEC = time.Now().Unix() - TIME_START
 
@@ -204,20 +204,27 @@ func main() {
         if MINUT >= 60 {
             HOUR += 1
             MINUT = 0
+            TMP += 1
         }
-    
-        hour_string := strconv.FormatInt(HOUR, 10)
-        minut_string := strconv.FormatInt(MINUT, 10)
-        time_string := []string{hour_string, " hours and ", minut_string, " minutes\n"}
-        TIME = (strings.Join(time_string, " "))
+
+        if TMP >= 10 {
+            hour_string := strconv.FormatInt(HOUR, 10)
+            minut_string := strconv.FormatInt(MINUT, 10)
+            time_string := []string{hour_string, " hours and ", minut_string, " minutes\n"}
+            TIME = (strings.Join(time_string, " "))
+            //if yes_output == true {
+            //    fmt.Print(TIME)
+            //}
+            //fmt.Print(TIME)
+            write_file(TIME)
+            TMP = 0
+        }
         if yes_output == true {
             fmt.Print(TIME)
         }
-        //fmt.Print(TIME)
-        write_file(TIME)
+
 
     }
-
 
 }
 
