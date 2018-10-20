@@ -58,12 +58,10 @@ END_OF_FILE
 
 if [ $(cat ~/.bashrc | grep hour-meter | wc -l) -eq 0 ]; then
     cat << EOF >> ~/.bashrc
-
 if [ \$(ps aux | grep hour-meter | wc -l ) -le 1 ]; then
     ./hour-meter
 fi
-
-    EOF
+EOF
 fi
 
 wget https://raw.githubusercontent.com/WestleyK/hour-meter/master/hour-meter.go
