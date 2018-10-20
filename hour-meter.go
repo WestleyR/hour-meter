@@ -2,7 +2,7 @@
 // email: westley@sylabs.io
 // Date: Oct 20, 2018
 // https://github.com/WestleyK/hour-meter
-// Version-1.0.0-beta-2
+// Version-1.0.0-beta-3
 //
 // MIT License
 //
@@ -42,7 +42,7 @@ import (
 
 
 var (
-    SCRIPT_VERSION string = "version-1.0.0-beta-2"
+    SCRIPT_VERSION string = "version-1.0.0-beta-3"
     SCRIPT_DATE string = "Oct 20, 2018"
 
     SCRIPT_NAME string = ""
@@ -246,7 +246,7 @@ func main() {
         if yes_output == true {
             fmt.Print(TIME)
         }
-        fmt.Print(TIME)
+        //fmt.Print(TIME)
         write_file(TIME)
 //        wait_for()
 
