@@ -2,7 +2,7 @@
 // email: westley@sylabs.io
 // Date: Oct 20, 2018
 // https://github.com/WestleyK/hour-meter
-// Version-1.0.0-beta-3
+// Version-1.0.0
 //
 // MIT License
 //
@@ -42,7 +42,7 @@ import (
 
 
 var (
-    SCRIPT_VERSION string = "version-1.0.0-beta-3"
+    SCRIPT_VERSION string = "version-1.0.0"
     SCRIPT_DATE string = "Oct 20, 2018"
 
     SCRIPT_NAME string = ""
@@ -174,18 +174,6 @@ func check_args(OPTION string) {
     }
 }
 
-func wait_for() {
-    for {
-        //fmt.Println(time.Now().Unix() - WAIT_TIME)
-        if (time.Now().Unix() - WAIT_TIME) >= 1 {
-            //fmt.Println("times up!")
-            return
-        }
-        time.Sleep(1 * time.Second)
-    }
-    
-}
-
 func main() {
     START_TIME = time.Now().Unix()
     SCRIPT_NAME = os.Args[0]
@@ -198,28 +186,10 @@ func main() {
         fail("too many arguments!", "")
     }
 
-//    now := time.Now()
-//    secs := now.Unix()
-//    fmt.Println(secs)
-
-    
-//    time.Sleep(6 * time.Second)
-
     start()
     TIME_START := time.Now().Unix()
     for {
         time.Sleep(1 * time.Second)
-//        WAIT_TIME = time.Now().Unix()
-//        wait_for()
-
-//        fmt.Println(time.Now().Unix() - START_TIME)
-
-        //if set_minute == true {
-            //set_minute = false
-        //} else {
-//            fmt.Println("foo")
-        //    MINUT = time.Now().Unix() - TIME_START
-        //}
 
         if set_minute == true {
             MINUT = time.Now().Unix() - TIME_START
@@ -248,7 +218,6 @@ func main() {
         }
         //fmt.Print(TIME)
         write_file(TIME)
-//        wait_for()
 
     }
 
