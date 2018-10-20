@@ -4,7 +4,7 @@
 # email: westley@sylabs.io
 # Date: Oct 20, 2018
 # https://github.com/WestleyK/hour-meter
-# Version-1.0.2
+# Version-1.0.3
 #
 # MIT License
 #
@@ -70,7 +70,6 @@ echo "Compileing code..."
 go build $CODE_NAME $INFO_NAME
 rm -f $INFO_NAME
 rm -f $CODE_NAME
-cp $SCRIPT_NAME ~/
 ~/./$SCRIPT_NAME &
 echo "Done."
 
