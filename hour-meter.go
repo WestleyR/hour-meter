@@ -2,7 +2,7 @@
 // email: westley@sylabs.io
 // Date: Oct 20, 2018
 // https://github.com/WestleyK/hour-meter
-// Version-1.0.6
+// Version-1.0.8
 //
 // MIT License
 //
@@ -42,7 +42,7 @@ import (
 
 
 var (
-    SCRIPT_VERSION string = "version-1.0.6"
+    SCRIPT_VERSION string = "version-1.0.8"
     SCRIPT_DATE string = "Oct 20, 2018"
 
     SCRIPT_NAME string = ""
@@ -189,6 +189,7 @@ func main() {
     }
 
     start()
+    TMP = 10
     TIME_START := time.Now().Unix()
     for {
         time.Sleep(30 * time.Second)
@@ -199,12 +200,12 @@ func main() {
             MINUT += 1
             SEC = 0
             TIME_START = time.Now().Unix()
+            TMP += 1            
         }
 
         if MINUT >= 60 {
             HOUR += 1
             MINUT = 0
-            TMP += 1
         }
 
         if TMP >= 10 {
@@ -220,8 +221,17 @@ func main() {
             TMP = 0
         }
         if yes_output == true {
+            hour_string := strconv.FormatInt(HOUR, 10)
+            minut_string := strconv.FormatInt(MINUT, 10)
+            time_string := []string{hour_string, " hours and ", minut_string, " minutes\n"}
+            TIME = (strings.Join(time_string, " "))
             fmt.Print(TIME)
         }
+
+//        fmt.Println(TMP)
+//        fmt.Println(SEC)
+//        fmt.Println(MINUT)
+//        fmt.Println()
 
 
     }
