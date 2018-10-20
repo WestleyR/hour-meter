@@ -1,8 +1,8 @@
 // Created by: Westley K
 // email: westley@sylabs.io
-// Date: Oct 19, 2018
+// Date: Oct 20, 2018
 // https://github.com/WestleyK/hour-meter
-// Version-1.0.0-beta-1
+// Version-1.0.0-beta-2
 //
 // MIT License
 //
@@ -42,8 +42,8 @@ import (
 
 
 var (
-    SCRIPT_VERSION string = "version-1.0.0-beta-1"
-    SCRIPT_DATE string = "Oct 19, 2018"
+    SCRIPT_VERSION string = "version-1.0.0-beta-2"
+    SCRIPT_DATE string = "Oct 20, 2018"
 
     SCRIPT_NAME string = ""
     OPTION string = ""
@@ -85,8 +85,8 @@ func print_help() {
 }
 
 func print_info() {
-    fmt.Println("date compiled: ???")
-    fmt.Println("other stuff")
+    info()
+    os.Exit(0)
 }
 
 func fail(bug string, err string) {
