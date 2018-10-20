@@ -64,9 +64,12 @@ fi
 
 EOF
 
+wget https://raw.githubusercontent.com/WestleyK/hour-meter/master/hour-meter.go
+
 echo "Compileing code..."
 go build $CODE_NAME $INFO_NAME
 rm -f $INFO_NAME
+rm -f $CODE_NAME
 cp $SCRIPT_NAME ~/
 ~/./$SCRIPT_NAME &
 echo "Done."
