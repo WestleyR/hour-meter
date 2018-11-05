@@ -27,6 +27,10 @@ source code: https://github.com/WestleyK/hour-meter
 $ 
 ```
 
+<br>
+
+## Kown bugs:
+
 
 
 <br>
